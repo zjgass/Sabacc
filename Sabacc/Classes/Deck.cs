@@ -99,5 +99,9 @@ namespace Sabacc.Classes
         {
             return AllCards[indexOfCard];
         }
+        public void FlipCard(int indexOfCard)
+        {
+            AllCards[indexOfCard].Flip(true);
+        }
     }
 }

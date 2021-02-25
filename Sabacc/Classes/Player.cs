@@ -39,5 +39,33 @@ namespace Sabacc.Classes
 
             return bid;
         }
+        public List<Card> CallHand()
+        {
+            List<Card> hand = new List<Card>();
+
+            foreach(int index in Hand.CurrentCards)
+            {
+                hand.Add(Hand.Table.Deck.WhatCard(index));
+            }
+
+            return hand;
+        }
+        public bool PlaceCardInInterference(int index)
+        {
+            bool success = false;
+            
+            if (Hand.CurrentCards.Contains(index))
+            {
+                int cardToFlip = Hand.CurrentCards[index];
+                Hand.Table.Deck.FlipCard(cardToFlip);
+                success = true;
+            }
+            else
+            {
+                throw new Exception("You don't have that card.");
+            }
+
+            return success;            
+        }
     }
 }
